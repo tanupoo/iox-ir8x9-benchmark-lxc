@@ -1,0 +1,22 @@
+descriptor-schema-version: "2.4"
+info:
+  name: ir8x9-benchmark
+  description: "Ubuntu Linux with sysbench LXC"
+  version: "1.0"
+app:
+  type: lxc
+  kernel-version: "1.0"
+  cpuarch: x86_64
+  #env:
+  #  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  resources:
+    profile: custom
+    cpu: 512
+    memory: 64
+    disk: 2
+    network:
+    - interface-name: eth0
+      ports: {}
+  startup:
+    rootfs: rootfs.img
+    target: /sbin/init
