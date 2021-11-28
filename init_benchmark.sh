@@ -1,13 +1,12 @@
 #!/bin/sh
 # chkconfig: 123 69 68
-# description: Hello World application init script
+# description: benchmark init script
 
 # Source function library.
 . /etc/init.d/functions
 
 start() {
     echo -n "Start benchmark"
-    #source /data/.env
     /bin/benchmark.sh &
 }
 
