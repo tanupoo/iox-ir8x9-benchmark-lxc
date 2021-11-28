@@ -1,7 +1,8 @@
 IR8x9 LXC版アプリの起動の例
 ============================
 
-2021年11月くらいの話。
+- 2021年11月くらいの話。
+- sysbenchを動かす例。
 
 基本は [Tutorial](https://developer.cisco.com/docs/iox/#!tutorial-build-sample-lxc-type-iox-app-using-docker-toolchain/tutorial-build-sample-lxc-type-iox-app-using-docker-toolchain) に従う。
 
@@ -15,9 +16,10 @@ Error while exporting docker image and creating rootfs image
 Error occurred :  For this command, IOxclient needs to be run in a Linux environment!
 ```
 
-## LXC版アプリのビルド
+## Dockerを使ったアプリのビルド
 
-- Dockerコンテナを作るまでは同じ。
+- 開発環境はDocker。
+- Docker版アプリのコンテナを作るまでは、ほぼ同じ。
 - [IOX SDE 1.7.0](https://developer.cisco.com/docs/iox/#!iox-resource-downloads/downloads)に入ってるDockerは17.03でマルチステージビルドが使えない。
     + docker環境があれば何でもいいはずなので独自に作る方が便利かもしれない。
 
@@ -120,17 +122,24 @@ app:
     target: /sbin/init
 ```
 
-ビルドする前に ioxclientを初期設定する。
+パッケージ作成の前に必要ならioxclientを初期設定する。
 ioxclientについては、[What is ioxclient?](https://developer.cisco.com/docs/iox/#what-is-ioxclient)を参照する。
 
 ```
 ioxclient pr c
 ```
 
-ビルドから起動してログ取得まで。
+DockerイメージからDocker版IOxパッケージを作る。
 
 ```
-ioxclient docker pkg ir8x9-benchmark-lxc pkg/
+ioxclient docker pkg ir8x9-benchmark pkg/
+```
+
+## パッケージのインストール
+
+パッケージのインストールから起動してログ取得まで。
+
+```
 ioxclient app in benchmark pkg/package.tar
 ioxclient app act benchmark
 ioxclient app appdata upload benchmark appenv.txt appenv.txt
