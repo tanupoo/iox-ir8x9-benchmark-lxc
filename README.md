@@ -1,6 +1,8 @@
 IR8x9 LXC版アプリの起動の例
 ============================
 
+2021年11月くらいの話。
+
 基本は [Tutorial](https://developer.cisco.com/docs/iox/#!tutorial-build-sample-lxc-type-iox-app-using-docker-toolchain/tutorial-build-sample-lxc-type-iox-app-using-docker-toolchain) に従う。
 
 - Dockerでrootイメージを作るのでLXC版アプリのビルドはMacでもできる。
